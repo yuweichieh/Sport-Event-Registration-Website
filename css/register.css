@@ -1,0 +1,55 @@
+form {
+    padding: 20px;
+}
+
+input {
+    width: 100%;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    background: transparent;
+    outline: none;
+}
+
+
+input:focus {
+   background-color: lightgrey;
+}
+
+.regist_box {
+    font-size: 18px;
+    width: 450px;
+    height: 550px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 40px 20px;
+}
+
+.regist_box input[type="submit"] {
+    width: 49%;
+    border: none;
+    outline: none;
+    height: 40px;
+    background-color: mediumseagreen;
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 20px;
+}
+
+.regist_box input[type="reset"] {
+    width: 49%;
+    border: none;
+    outline: none;
+    height: 40px;
+    background-color: red;
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 20px;
+}

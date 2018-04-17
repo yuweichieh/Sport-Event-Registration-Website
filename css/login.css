@@ -1,0 +1,49 @@
+form {
+    padding: 60px 20px 20px 20px;
+}
+
+input {
+    width: 100%;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    background: transparent;
+    outline: none;
+}
+
+
+input:focus {
+    background-color: lightgrey;
+}
+
+.login_box {    
+    font-size: 18px;
+    width: 400px;
+    height: 320px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+}
+
+.login_box input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background-color: #1c8adb;
+    color: #ffffff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.login_box input[type="submit"]:hover {
+    cursor: point;
+    background: #39dc79;
+    color: #000000;
+}
+
