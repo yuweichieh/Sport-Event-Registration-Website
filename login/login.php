@@ -22,9 +22,9 @@
 
                 <ul class="nav">
                     <li><a href="../index.php">首頁</a></li>
-                    <li><a href="../register/register.html">註冊</a></li>
+                    <li><a href="../register/register.php">註冊</a></li>
                     <li><a href="#">活動報名</a></li>
-                    <li><a href=".login.html">登入</a></li>
+                    <li><a href="./login.php">登入</a></li>
                 </ul>
             </div>	
         </div>
