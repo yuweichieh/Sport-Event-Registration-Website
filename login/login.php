@@ -19,7 +19,6 @@
                 <div class="logo">
                     <h1><a href="#">NCTU SPORTS</a></h1>
                 </div>
-
                 <ul class="nav">
                     <li><a href="../index.php">首頁</a></li>
                     <li><a href="../register/register.php">註冊</a></li>

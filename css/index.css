@@ -1,0 +1,13 @@
+.ann_box {
+    font-size: 18px;
+    width: 1000px;
+    height: 550px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    top: 450%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 40px 20px;
+}
