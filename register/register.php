@@ -1,30 +1,5 @@
 <?php
     include('registing.php');
-/*    session_start();
-    $_SESSION['message'] = '';
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        if($_POST['password'] == $_POST['passwork_chk']){
-            $conn = mysqli_connect('localhost', 'root', 'root', 'final');
-                    if($conn->connect_error)
-                        die("Connection failed: ". $conn->connect_error);
-            $studentid = $conn->real_escape_string($_POST['studentid']);
-            $email = $conn->real_escape_string($_POST['email']);
-            $password = md5($_POST['password']);
-            
-            $query = "INSERT INTO user(student_id, password, email) VALUES('$studentid', '$password', '$email')"
-            if($conn->query($query) === true){
-                $_SESSION['username'] = $studentid;
-                $_SESSION['message'] = "Resgistration success!";
-                header("location: ../index.php");
-            }
-            else{
-                $_SESSION['message'] = "Registration failed while being inserted to database QAQ";
-            }
-        }
-        else{
-            $_SESSION['message'] = "The two passwords don't match!"
-        }
-    }*/
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +23,7 @@
                     <h1><a href="#">NCTU SPORTS</a></h1>
                 </div>
 
-                <ul class="nav">
+                <ul class="_nav">
                     <li><a href="../index.php">首頁</a></li>
                     <li><a href="./register.php">註冊</a></li>
                     <li><a href="#">活動報名</a></li>
@@ -59,8 +34,13 @@
         
         <div class="container">
             <div class="regist_box">
-                <div class="error"><A style="color:red; font-size:120%;"><?= $_SESSION['message'] ?></A></div>
-                <form action="./register.php" method="post">
+                    <?php
+                        if(isset($_SESSION['message'])){
+                            echo "<div id='error_msg'>".$_SESSION['message']."</div>";
+                            unset($_SESSION['message']);
+                        }
+                    ?>      
+                    <form action="./register.php" method="post">
                     <b>學號</b><br>
                     <input type="number" name="studentid" placeholder="Enter your Student ID" required><br>
                     <b>信箱</b><br>

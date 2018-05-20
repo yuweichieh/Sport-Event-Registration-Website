@@ -1,6 +1,5 @@
 <?php
     session_start();
-    //$errors = array();
 
 
     if (isset($_POST['regist'])){
@@ -23,7 +22,7 @@
             header('location: ./register.php');
         }
         else{   // input datas got nothing wrong
-            $password = md5($password);
+            //$password = md5($password);
             $query = "INSERT INTO user(student_id, password, email) VALUES('$studentid', '$password', '$email')";
             mysqli_query($conn, $query) or die(mysqli_error($conn));
             $_SESSION['username'] = $studentid;

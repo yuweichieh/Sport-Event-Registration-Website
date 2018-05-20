@@ -7,7 +7,6 @@
     define(db_name, 'my_db');
     define(port, 8889);
 
-    session_destroy();
     function db_connect(){
         // create connection to database
         $conn = mysqli_connect(host, user, password, db_name, port);
@@ -15,8 +14,6 @@
             die("Connection failed: ". $conn->connect_error);
         return $conn;
     }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +23,8 @@
 	<title>Index</title>
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
     <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
 	<script></script>
 </head>
 
@@ -40,13 +39,38 @@
 			<div class="logo">
                 <h1><a href="#">NCTU SPORTS</a></h1>
 			</div>
-
-			<ul class="nav">
+            <?php
+            if(!isset($_SESSION['username'])){
+            ?>
+			<ul class="_nav">
 				<li><a href="./index.php">首頁</a></li>
 				<li><a href="./register/register.php">註冊</a></li>
 				<li><a href="#">活動報名</a></li>
 				<li><a href="./login/login.php">登入</a></li>
 			</ul>
+            <?php   }else{  ?>
+            <ul class="_nav">
+				<li><a href="./index.php">首頁</a></li>
+				<li><a href="#">活動報名</a></li>
+				<!--<li><a href="./login/logout.php">登出</a></li> class="btn btn-danger navbar-btn"-->
+                <li><input type="button" value="登出" onclick=logout()></li>
+                <script type="text/javascript">
+                    function logout(){
+                        var conf = confirm("Do you want to logout?");
+                        if(conf){
+                            window.location = "./login/logout.php";   
+                        }
+                    }
+                </script>
+
+			</ul>
+            <?php   }   ?>
+            <?php
+                if(isset($_SESSION['message'])){
+                    echo "<div id='error_msg'>".$_SESSION['message']."</div>";
+                    unset($_SESSION['message']);
+                }
+            ?>
             <div class="ann_box">
                 <?php
                     $conn = db_connect();

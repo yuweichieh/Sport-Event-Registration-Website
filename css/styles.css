@@ -11,7 +11,7 @@ body {
 	height: 100vh;
 }
 
-.container {
+.container_ {
 	width: 1060px;
 	margin: auto;
 }
@@ -34,17 +34,35 @@ a {
 	text-decoration: none;
 }
 
-.nav {
+._nav {
 	float: right;
 }
 
-.nav > li {
+._nav > li {
 	float: left;
 	padding-top: 30px;
 	margin-left: 30px;
 	list-style: none;
 }
 
-.nav > li > a:hover {
+.nav > li > input {
+    border: none;
+    background: none;
+    color: white;
+	text-decoration: none;
+}
+
+._nav > li > a:hover {
 	color: #c1c1c1;
+}
+
+#error_msg {
+    width: 50%;
+    margin: 5px auto;
+    height: 30px;
+    border: 1px solid #FF0000;
+    background: #FFB9B8;
+    color: #FF0000;
+    text-align: center;
+    padding-top: 10px;
 }
