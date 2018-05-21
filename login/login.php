@@ -63,30 +63,5 @@
                 </form>
             </div>
         </div>
-        <!--
-        
-        <?php
-            if(isset($_POST['login_btn'])){
-                $pwd = $_POST['password'];
-                $id = $_POST['studentid'];
-                //$_POST["password"] = md5($_POST["password"]);
-                $conn = db_connect();
-                //$query = "SELECT * FROM user WHERE student_id='".$id."' AND password='".$pwd."'";
-                $res = mysqli_query($conn, "SELECT * FROM user WHERE student_id='$id' AND password='$pwd'")
-                        or die("Failed to query database".mysql_error());
-                mysqli_close($conn);
-                
-                if($rows = mysqli_fetch_array($res)){
-                    $_SESSION["username"] = $rows["username"];
-                    header('location: ../index.php');
-                }
-                else{
-                    $_SESSION['message'] = "There's no corresponding account!";
-                    header('location: ../register/register.php');
-
-                }
-            }
-        ?>
-        -->
     </body>
 </html>

@@ -53,12 +53,12 @@
 				<li><a href="./index.php">首頁</a></li>
 				<li><a href="#">活動報名</a></li>
 				<!--<li><a href="./login/logout.php">登出</a></li> class="btn btn-danger navbar-btn"-->
-                <li><input type="button" value="登出" onclick=logout()></li>
+                <li><input type="button" value="登出" onclick="logout()"></li>
                 <script type="text/javascript">
                     function logout(){
                         var conf = confirm("Do you want to logout?");
                         if(conf){
-                            window.location = "./login/logout.php";   
+                            window.location.href = './login/logout.php';   
                         }
                     }
                 </script>
