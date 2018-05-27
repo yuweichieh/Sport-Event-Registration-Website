@@ -79,7 +79,7 @@
                     mysqli_close($conn);
                 ?>
                 
-                <h1>&nbsp&nbsp&nbsp最新公告</h1><br>
+                <h1>最新公告</h1><br>
                 <table width=100% border="0" cellpadding ="6" cellspacing="0">
                 <?php
                     while ($var = mysqli_fetch_array($result)){
@@ -87,7 +87,7 @@
                     <tr>
                         <th><?php echo $var['ann_date'] ?></th>
                         <td><?php echo $var['title'] ?></td>
-                        <td><a href="./anncs/anncs.php?ann_id=<?php echo $var['ann_id']?>" class="btn btn-primary">More</td>
+                        <td><a href="./anncs/anncs.php?ann_id=<?php echo $var['ann_id']?>" class="btn btn-primary">More</a></td>
                     </tr>
                 <?php
                     }

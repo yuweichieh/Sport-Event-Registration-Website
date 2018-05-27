@@ -21,8 +21,8 @@
 <head>
 	<meta charset="utf-8">
 	<title>Index</title>
-	<link rel="stylesheet" type="text/css" href="./css/styles.css">
-    <link rel="stylesheet" type="text/css" href="./css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">    
 </head>
 
@@ -69,7 +69,7 @@
                     mysqli_close($conn);
                     $var = mysqli_fetch_array($result);
                 ?>
-                <h1>&nbsp&nbsp&nbsp<?php echo $var['title']?></h1>
+                <h1><?php echo $var['title']?></h1>
                 <h3><?php echo $var['ann_date']?></h3>
                 <p><h3><?php echo $var['content']?></h3></p>
                 <?php
