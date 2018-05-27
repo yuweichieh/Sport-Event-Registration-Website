@@ -26,7 +26,7 @@
                 <ul class="_nav">
                     <li><a href="../index.php">首頁</a></li>
                     <li><a href="./register.php">註冊</a></li>
-                    <li><a href="#">活動報名</a></li>
+                    <li><a href="../event/event.php">活動報名</a></li>
                     <li><a href="../login/login.php">登入</a></li>
                 </ul>
             </div>	

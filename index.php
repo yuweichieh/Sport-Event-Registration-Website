@@ -24,8 +24,8 @@
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
     <link rel="stylesheet" type="text/css" href="./css/index.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
-	<script></script>
+    <script src="jquery-3.3.1.min.js"></script>
+    
 </head>
 
 <!-- ==================================== -->
@@ -87,6 +87,7 @@
                     <tr>
                         <th><?php echo $var['ann_date'] ?></th>
                         <td><?php echo $var['title'] ?></td>
+                        <td><a href="./anncs/anncs.php?ann_id=<?php echo $var['ann_id']?>" class="btn btn-primary">More</td>
                     </tr>
                 <?php
                     }
