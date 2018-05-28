@@ -4,10 +4,28 @@
     height: 550px;
     background: rgba(0, 0, 0, 0.5);
     color: white;
-    top: 450%;
+    top: 50%;
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
     box-sizing: border-box;
     padding: 40px 20px;
+}
+
+.detail_btn {
+    background-color: #66ccff;
+    border: 2px solid #66ccff;
+    border-radius: 12px;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+}
+
+.detail_btn:hover {
+    background-color: white;
+    color: #66ccff;
 }

@@ -54,30 +54,33 @@
                 <li><input type="button" value="登出" onclick="logout()"></li>
                
 			</ul>
+            
             <?php   }   ?>
+        </div>
+    </div>
+    
+            
+    <div class="container">
+        <div class="ann_box">
             <?php
                 if(isset($_SESSION['message'])){
                     echo "<div id='error_msg'>".$_SESSION['message']."</div>";
                     unset($_SESSION['message']);
                 }
+                $conn = db_connect();
+                $query = "SELECT * FROM announces WHERE ann_id=".$_GET["ann_id"];
+                $result = mysqli_query($conn, $query);
+                mysqli_close($conn);
+                $var = mysqli_fetch_array($result);
             ?>
-            <div class="ann_box">
-                <?php
-                    $conn = db_connect();
-                    $query = "SELECT * FROM announces WHERE ann_id=".$_GET["ann_id"];
-                    $result = mysqli_query($conn, $query);
-                    mysqli_close($conn);
-                    $var = mysqli_fetch_array($result);
-                ?>
-                <h1><?php echo $var['title']?></h1>
-                <h3><?php echo $var['ann_date']?></h3>
-                <p><h3><?php echo $var['content']?></h3></p>
-                <?php
-                    mysqli_free_result($result);
-                ?>
-                
-            </div>
-		</div>	
+            <h1><?php echo $var['title']?></h1>
+            <p align="right"><?php echo $var['ann_date']?></p>
+            <h3><?php echo $var['content']?></h3>
+            <?php
+                mysqli_free_result($result);
+            ?>
+
+        </div>
 	</div>
 </body>
 </html>

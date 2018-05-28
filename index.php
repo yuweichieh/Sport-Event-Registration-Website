@@ -21,9 +21,11 @@
 <head>
 	<meta charset="utf-8">
 	<title>Index</title>
-	<link rel="stylesheet" type="text/css" href="./css/styles.css">
-    <link rel="stylesheet" type="text/css" href="./css/index.css">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./css/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/index.css"/>
+    <!--
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    -->
     <script src="jquery-3.3.1.min.js"></script>
     
 </head>
@@ -33,26 +35,24 @@
 <body>
     
 	<div class="header">
-        
-		<div class="container">
-
-			<div class="logo">
+        <div class="container">
+            <div class="logo">
                 <h1><a href="#">NCTU SPORTS</a></h1>
-			</div>
+            </div>
             <?php
             if(!isset($_SESSION['username'])){
             ?>
-			<ul class="_nav">
-				<li><a href="./index.php">首頁</a></li>
-				<li><a href="./register/register.php">註冊</a></li>
-				<li><a href="#">活動報名</a></li>
-				<li><a href="./login/login.php">登入</a></li>
-			</ul>
+            <ul class="_nav">
+                <li><a href="./index.php">首頁</a></li>
+                <li><a href="./register/register.php">註冊</a></li>
+                <li><a href="#">活動報名</a></li>
+                <li><a href="./login/login.php">登入</a></li>
+            </ul>
             <?php   }else{  ?>
             <ul class="_nav">
-				<li><a href="./index.php">首頁</a></li>
-				<li><a href="#">活動報名</a></li>
-				<!--<li><a href="./login/logout.php">登出</a></li> class="btn btn-danger navbar-btn"-->
+                <li><a href="./index.php">首頁</a></li>
+                <li><a href="#">活動報名</a></li>
+                <!--<li><a href="./login/logout.php">登出</a></li> class="btn btn-danger navbar-btn"-->
                 <li><input type="button" value="登出" onclick="logout()"></li>
                 <script type="text/javascript">
                     function logout(){
@@ -62,43 +62,43 @@
                         }
                     }
                 </script>
-
-			</ul>
+            </ul>
             <?php   }   ?>
+        </div>
+	</div>
+
+    <div class="container">
+        <div class="ann_box">
             <?php
                 if(isset($_SESSION['message'])){
                     echo "<div id='error_msg'>".$_SESSION['message']."</div>";
                     unset($_SESSION['message']);
                 }
+                $conn = db_connect();
+                $query = "SELECT * FROM announces ORDER BY ann_id Desc LIMIT 7";
+                $result = mysqli_query($conn, $query);
+                mysqli_close($conn);
             ?>
-            <div class="ann_box">
-                <?php
-                    $conn = db_connect();
-                    $query = "SELECT * FROM announces ORDER BY ann_id Desc LIMIT 7";
-                    $result = mysqli_query($conn, $query);
-                    mysqli_close($conn);
-                ?>
-                
-                <h1>最新公告</h1><br>
-                <table width=100% border="0" cellpadding ="6" cellspacing="0">
-                <?php
-                    while ($var = mysqli_fetch_array($result)){
-                ?>
-                    <tr>
-                        <th><?php echo $var['ann_date'] ?></th>
-                        <td><?php echo $var['title'] ?></td>
-                        <td><a href="./anncs/anncs.php?ann_id=<?php echo $var['ann_id']?>" class="btn btn-primary">More</a></td>
-                    </tr>
-                <?php
-                    }
-                ?>
-                </table>
-                <?php
-                    mysqli_free_result($result);
-                ?>
-                
-            </div>
-		</div>	
-	</div>
+
+            <h1>&nbsp;&nbsp;&nbsp;最新公告</h1><br>
+            <table width=100% border="0" cellpadding ="6" cellspacing="0">
+            <?php
+                while ($var = mysqli_fetch_array($result)){
+            ?>
+                <tr>
+                    <th><?php echo $var['ann_date'] ?></th>
+                    <td><?php echo $var['title'] ?></td>
+                    <td><a class="detail_btn" href="./anncs/anncs.php?ann_id=<?php echo $var['ann_id']?>" class="btn btn-primary">More</a></td>
+                </tr>
+            <?php
+                }
+            ?>
+            </table>
+            <?php
+                mysqli_free_result($result);
+            ?>
+
+        </div>
+    </div>	
 </body>
 </html>
