@@ -29,3 +29,39 @@
     background-color: white;
     color: #66ccff;
 }
+
+.edit_btn {
+    background-color: #33ff33;
+    border: 2px solid #33ff33;
+    border-radius: 12px;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+}
+
+.edit_btn:hover {
+    background-color: white;
+    color: #33ff33;
+}
+
+.delete_btn {
+    background-color: #ff0000;
+    border: 2px solid #ff0000;
+    border-radius: 12px;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+}
+
+.delete_btn:hover {
+    background-color: white;
+    color: #ff0000;
+}

@@ -40,7 +40,7 @@
                 <h1><a href="#">NCTU SPORTS</a></h1>
             </div>
             <?php
-            if(!isset($_SESSION['username'])){
+                if(!isset($_SESSION['username'])){
             ?>
             <ul class="_nav">
                 <li><a href="./index.php">首頁</a></li>
@@ -48,11 +48,30 @@
                 <li><a href="#">活動報名</a></li>
                 <li><a href="./login/login.php">登入</a></li>
             </ul>
+            
+            <?php   }elseif($_SESSION['username']==1){  ?>
+            <ul class="_nav">
+                <li><a href="./index.php">首頁</a></li>
+                <li><a href="#">活動報名</a></li>
+                <li><a href="#">報名狀況</a></li>
+                <li style="color:white;">Hi, Admin</li>
+                <li><input type="button" value="登出" onclick="logout()"></li>
+                <script type="text/javascript">
+                    function logout(){
+                        var conf = confirm("Do you want to logout?");
+                        if(conf){
+                            window.location.href = './login/logout.php';   
+                        }
+                    }
+                </script>
+            </ul>    
+            
             <?php   }else{  ?>
             <ul class="_nav">
                 <li><a href="./index.php">首頁</a></li>
                 <li><a href="#">活動報名</a></li>
                 <!--<li><a href="./login/logout.php">登出</a></li> class="btn btn-danger navbar-btn"-->
+                <li style="color:white;">Hi, <?php echo $_SESSION['username']; ?></li>
                 <li><input type="button" value="登出" onclick="logout()"></li>
                 <script type="text/javascript">
                     function logout(){
@@ -89,6 +108,18 @@
                     <th><?php echo $var['ann_date'] ?></th>
                     <td><?php echo $var['title'] ?></td>
                     <td><a class="detail_btn" href="./anncs/anncs.php?ann_id=<?php echo $var['ann_id']?>" class="btn btn-primary">More</a></td>
+                    <?php if($_SESSION['username']==1){?>
+                    <td><a class="edit_btn" href="#">Edit</a></td>
+                    <td><a class="delete_btn" href="javascript: return false;" onclick="delete_chk()">Delete</a></td>
+                    <script type="text/javascript">
+                        function delete_chk(){
+                            var conf = confirm("Do you want to delete the announcement?");
+                            if(conf){
+                                window.location.href = './anncs/anncs_delete.php';   
+                            }
+                        }
+                    </script>
+                    <?php } ?>
                 </tr>
             <?php
                 }
