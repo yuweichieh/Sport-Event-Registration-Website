@@ -107,18 +107,10 @@
                 <tr>
                     <th><?php echo $var['ann_date'] ?></th>
                     <td><?php echo $var['title'] ?></td>
-                    <td><a class="detail_btn" href="./anncs/anncs.php?ann_id=<?php echo $var['ann_id']?>" class="btn btn-primary">More</a></td>
+                    <td><a class="detail_btn" href="./anncs/anncs.php?ann_id=<?php echo $var['ann_id']?>">More</a></td>
                     <?php if($_SESSION['username']==1){?>
                     <td><a class="edit_btn" href="#">Edit</a></td>
-                    <td><a class="delete_btn" href="javascript: return false;" onclick="delete_chk()">Delete</a></td>
-                    <script type="text/javascript">
-                        function delete_chk(){
-                            var conf = confirm("Do you want to delete the announcement?");
-                            if(conf){
-                                window.location.href = './anncs/anncs_delete.php';   
-                            }
-                        }
-                    </script>
+                    <td><a class="delete_btn" href="./anncs/anncs_delete.php?ann_id=<?php echo $var['ann_id']?>" onclick="return confirm('Are you sure?')">Delete</a></td>
                     <?php } ?>
                 </tr>
             <?php
