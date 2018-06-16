@@ -94,19 +94,22 @@
                     unset($_SESSION['message']);
                 }
                 $conn = db_connect();
-                $query = "SELECT * FROM announces ORDER BY ann_id Desc LIMIT 7";
+                $query = "SELECT * FROM event";
                 $result = mysqli_query($conn, $query);
                 mysqli_close($conn);
             ?>
 
-            <h1>&nbsp;&nbsp;&nbsp;最新公告</h1><br>
+            <h1>&nbsp;&nbsp;&nbsp;活動列表</h1><br>
             <table width=100% border="0" cellpadding ="6" cellspacing="0">
+                <tr>
+                    <th>項目</th> <td>規則</td> <td>報名</td>
+                </tr>
             <?php
                 while ($var = mysqli_fetch_array($result)){
             ?>
                 <tr>
-                    <th><?php echo $var['ann_date'] ?></th>
-                    <td><?php echo $var['title'] ?></td>
+                    <th><?php echo $var['name'] ?></th>
+                    <td><?php echo $var['rule'] ?></td>
                     <td><a class="detail_btn" href="./anncs/anncs.php?ann_id=<?php echo $var['ann_id']?>">More</a></td>
                     <?php if($_SESSION['username']==1){?>
                     <td><a class="edit_btn" href="#">Edit</a></td>
