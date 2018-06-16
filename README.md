@@ -3,6 +3,6 @@
 ---
 ## Left to be done
 * sign up for event(still w/ some backend issue)
-* adding new announcement, event(easy one)
-* event status for admin users(easy one)
-* deleting event(easy one)
+* adding new announcement, event
+* event status for admin users
+* deleting event

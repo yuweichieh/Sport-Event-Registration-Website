@@ -20,9 +20,9 @@
 <html lang="zh-TW">
 <head>
 	<meta charset="utf-8">
-	<title>Index</title>
-	<link rel="stylesheet" type="text/css" href="./css/styles.css"/>
-    <link rel="stylesheet" type="text/css" href="./css/index.css"/>
+	<title>Event</title>
+	<link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/index.css"/>
     <!--
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     -->
@@ -43,15 +43,15 @@
                 if(!isset($_SESSION['username'])){
             ?>
             <ul class="_nav">
-                <li><a href="./index.php">首頁</a></li>
-                <li><a href="./register/register.php">註冊</a></li>
+                <li><a href="../index.php">首頁</a></li>
+                <li><a href="../register/register.php">註冊</a></li>
                 <li><a href="#">活動報名</a></li>
                 <li><a href="./login/login.php">登入</a></li>
             </ul>
             
             <?php   }elseif($_SESSION['username']==1){  ?>
             <ul class="_nav">
-                <li><a href="./index.php">首頁</a></li>
+                <li><a href="../index.php">首頁</a></li>
                 <li><a href="#">活動報名</a></li>
                 <li><a href="#">報名狀況</a></li>
                 <li style="color:white;">Hi, Admin</li>
@@ -60,7 +60,7 @@
                     function logout(){
                         var conf = confirm("Do you want to logout?");
                         if(conf){
-                            window.location.href = './login/logout.php';   
+                            window.location.href = '../login/logout.php';   
                         }
                     }
                 </script>

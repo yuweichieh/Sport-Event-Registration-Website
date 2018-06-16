@@ -100,7 +100,10 @@
             ?>
 
             <h1>&nbsp;&nbsp;&nbsp;最新公告</h1><br>
-            <table width=100% border="0" cellpadding ="6" cellspacing="0">
+            <table width=100% border="0" cellpadding ="6" cellspacing="0">                    
+            <?php if($_SESSION['username']==1){ ?>
+                <input type="button" value="新增公告" onclick="window.location.href='./anncs/add_anncs.php'">
+            <?php } ?>
             <?php
                 while ($var = mysqli_fetch_array($result)){
             ?>

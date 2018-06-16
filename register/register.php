@@ -43,6 +43,8 @@
                     <form action="./register.php" method="post">
                     <b>學號</b><br>
                     <input type="number" name="studentid" placeholder="Enter your Student ID" required><br>
+                    <b>姓名</b><br>
+                    <input type="text" name="name" placeholder="Enter your Name" required><br>
                     <b>信箱</b><br>
                     <input type="text" name="email" placeholder="Enter your E-mail" required><br>
                     <b>密碼</b><br>
