@@ -21,10 +21,10 @@ input:focus {
 .regist_box {
     font-size: 18px;
     width: 550px;
-    height: 750px;
+    height: 850px;
     background: rgba(0, 0, 0, 0.5);
     color: white;
-    top: 50%;
+    top: 70%;
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);

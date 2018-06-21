@@ -45,14 +45,14 @@
             <ul class="_nav">
                 <li><a href="./index.php">首頁</a></li>
                 <li><a href="./register/register.php">註冊</a></li>
-                <li><a href="#">活動報名</a></li>
+                <li><a href="./event/event.php">活動報名</a></li>
                 <li><a href="./login/login.php">登入</a></li>
             </ul>
             
             <?php   }elseif($_SESSION['username']==1){  ?>
             <ul class="_nav">
                 <li><a href="./index.php">首頁</a></li>
-                <li><a href="#">活動報名</a></li>
+                <li><a href="./event/event.php">活動報名</a></li>
                 <li><a href="#">報名狀況</a></li>
                 <li style="color:white;">Hi, Admin</li>
                 <li><input type="button" value="登出" onclick="logout()"></li>
@@ -69,7 +69,7 @@
             <?php   }else{  ?>
             <ul class="_nav">
                 <li><a href="./index.php">首頁</a></li>
-                <li><a href="#">活動報名</a></li>
+                <li><a href="./event">活動報名</a></li>
                 <!--<li><a href="./login/logout.php">登出</a></li> class="btn btn-danger navbar-btn"-->
                 <li style="color:white;">Hi, <?php echo $_SESSION['username']; ?></li>
                 <li><input type="button" value="登出" onclick="logout()"></li>
@@ -99,12 +99,12 @@
                 mysqli_close($conn);
             ?>
 
-            <h1>&nbsp;&nbsp;&nbsp;最新公告</h1><br>
+            <h1>&nbsp;&nbsp;&nbsp;最新公告</h1>
             <table width=100% border="0" cellpadding ="6" cellspacing="0">                    
-            <?php if($_SESSION['username']==1){ ?>
-                <input type="button" value="新增公告" onclick="window.location.href='./anncs/add_anncs.php'">
-            <?php } ?>
             <?php
+                if($_SESSION['username']==1){   ?>
+                    <a class="add_btn" href="./anncs/add_anncs.php">新增公告</a>
+                <?php   }
                 while ($var = mysqli_fetch_array($result)){
             ?>
                 <tr>

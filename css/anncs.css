@@ -17,8 +17,8 @@
     margin-bottom: 30px;
     border: none;
     border-bottom: 1px solid #ffffff;
-    height: 40px;
-    font-size: 25px;
+    height: 30px;
+    font-size: 16px;
     border-radius: 2px;
     color: #ffffff;
     width: 100%;
@@ -61,4 +61,19 @@
     color: #ffffff;
     font-size: 16px;
     border-radius: 20px;
+}
+
+.rule {
+    padding-top: 10px 10px 10px 10px;
+    box-sizing: content-box;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    height: 200px;
+    font-size: 16px;
+    border-radius: 2px;
+    color: #ffffff;
+    width: 100%;
+    outline: none;
+    color: #000000;
 }

@@ -20,8 +20,9 @@
 <html lang="zh-TW">
 <head>
 	<meta charset="utf-8">
-	<title>Index</title>
+	<title>New Announcement</title>
 	<link rel="stylesheet" type="text/css" href="../css/styles.css">
+	<link rel="stylesheet" type="text/css" href="../css/anncs.css">
     <link rel="stylesheet" type="text/css" href="../css/index.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">    
 </head>
@@ -50,7 +51,6 @@
             <ul class="_nav">
 				<li><a href="../index.php">首頁</a></li>
 				<li><a href="#">活動報名</a></li>
-                <li style="color:white;">Hi, <?php echo $_SESSION['username']; ?></li>
 				<!--<li><a href="./login/logout.php">登出</a></li> class="btn btn-danger navbar-btn"-->
                 <li><input type="button" value="登出" onclick="logout()"></li>
                
@@ -62,26 +62,28 @@
     
             
     <div class="container">
-        <div class="ann_box">
+        <div class="add_box">
             <?php
                 if(isset($_SESSION['message'])){
                     echo "<div id='error_msg'>".$_SESSION['message']."</div>";
                     unset($_SESSION['message']);
                 }
-                $conn = db_connect();
-                $query = "SELECT * FROM announces WHERE ann_id=".$_GET["ann_id"];
-                $result = mysqli_query($conn, $query);
-                mysqli_close($conn);
-                $var = mysqli_fetch_array($result);
-            ?>
-            <h1><?php echo $var['title']?></h1>
-            <p align="right"><?php echo $var['ann_date']?></p>
-            <h3><?php echo $var['content']?></h3>
-            <?php
-                mysqli_free_result($result);
-            ?>
-
+            ?>      
+            <form action="./event_create.php" method="post" id="ann">
+                <font size="16">活動名稱</font><br>
+                <input class="title" type="text" name="title" required><br>
+                <font size="16">活動規則</font><br>
+                <!--<input class="content" type="text" name="content" required><br>-->
+                <textarea class="rule" cols="50" name="rule" required></textarea><br>
+                <font size="16">隊伍限制</font><br>
+                <input class="title" type="number" name="team_limit" required><br>
+                <font size="16">人數限制</font><br>
+                <input class="title" type="number" name="mem_limit" required><br>
+                <input type="submit" name="ann_post" value="發佈公告">
+                <input type="reset" value="取消">
+            </form>
         </div>
 	</div>
+
 </body>
 </html>

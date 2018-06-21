@@ -35,6 +35,7 @@ a {
 }
 
 ._nav {
+    z-index: -1;
 	float: right;
 }
 
@@ -66,4 +67,75 @@ a {
     color: #FF0000;
     text-align: center;
     padding-top: 10px;
+}
+
+.add_btn {
+    background-color: #FFB3FF;
+    border: 2px solid #FFB3FF;
+    border-radius: 12px;
+    color: white;
+    padding: 10px 20px;
+    text-align: right;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+}
+.add_btn:hover {
+    background-color: white;
+    color: #FFB3FF;
+}
+
+.detail_btn {
+    background-color: #33ccff;
+    border: 2px solid #33ccff;
+    border-radius: 12px;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+}
+
+.detail_btn:hover {
+    background-color: white;
+    color: #33ccff;
+}
+
+.edit_btn {
+    background-color: #66dd00;
+    border: 2px solid #66dd00;
+    border-radius: 12px;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+}
+
+.edit_btn:hover {
+    background-color: white;
+    color: #66dd00;
+}
+
+.delete_btn {
+    background-color: #ff0000;
+    border: 2px solid #ff0000;
+    border-radius: 12px;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+}
+
+.delete_btn:hover {
+    background-color: white;
+    color: #ff0000;
 }

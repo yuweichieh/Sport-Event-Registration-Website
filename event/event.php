@@ -45,14 +45,14 @@
             <ul class="_nav">
                 <li><a href="../index.php">首頁</a></li>
                 <li><a href="../register/register.php">註冊</a></li>
-                <li><a href="#">活動報名</a></li>
+                <li><a href="./event.php">活動報名</a></li>
                 <li><a href="./login/login.php">登入</a></li>
             </ul>
             
             <?php   }elseif($_SESSION['username']==1){  ?>
             <ul class="_nav">
                 <li><a href="../index.php">首頁</a></li>
-                <li><a href="#">活動報名</a></li>
+                <li><a href="./event.php">活動報名</a></li>
                 <li><a href="#">報名狀況</a></li>
                 <li style="color:white;">Hi, Admin</li>
                 <li><input type="button" value="登出" onclick="logout()"></li>
@@ -69,7 +69,7 @@
             <?php   }else{  ?>
             <ul class="_nav">
                 <li><a href="./index.php">首頁</a></li>
-                <li><a href="#">活動報名</a></li>
+                <li><a href="./event.php">活動報名</a></li>
                 <!--<li><a href="./login/logout.php">登出</a></li> class="btn btn-danger navbar-btn"-->
                 <li style="color:white;">Hi, <?php echo $_SESSION['username']; ?></li>
                 <li><input type="button" value="登出" onclick="logout()"></li>
@@ -99,7 +99,10 @@
                 mysqli_close($conn);
             ?>
 
-            <h1>&nbsp;&nbsp;&nbsp;活動列表</h1><br>
+            <h1>&nbsp;&nbsp;&nbsp;活動列表</h1>
+            <?php if($_SESSION['username']==1){ ?>
+                <a class="add_btn" href="./new_event.php">新增活動</a>
+            <?php } ?>
             <table width=100% border="0" cellpadding ="6" cellspacing="0">
                 <tr>
                     <th>項目</th> <td>規則</td> <td>報名</td>
@@ -110,10 +113,13 @@
                 <tr>
                     <th><?php echo $var['name'] ?></th>
                     <td><?php echo $var['rule'] ?></td>
-                    <td><a class="detail_btn" href="./anncs/anncs.php?ann_id=<?php echo $var['ann_id']?>">More</a></td>
+                    if(isset($_SESSION['username']))
+                        <td><a class="detail_btn" href="./sign.php?event_id=<?php echo $var['event_id']?>">報名</a></td>
+                    else
+                        <td><a class="detail_btn" href="../login/login.php">報名</a></td>
                     <?php if($_SESSION['username']==1){?>
                     <td><a class="edit_btn" href="#">Edit</a></td>
-                    <td><a class="delete_btn" href="./anncs/anncs_delete.php?ann_id=<?php echo $var['ann_id']?>" onclick="return confirm('Are you sure?')">Delete</a></td>
+                    <td><a class="delete_btn" href="./event_delete.php?event_id=<?php echo $var['event_id']?>" onclick="return confirm('Are you sure?')">Delete</a></td>
                     <?php } ?>
                 </tr>
             <?php

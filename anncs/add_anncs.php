@@ -69,12 +69,12 @@
                     unset($_SESSION['message']);
                 }
             ?>      
-            <form action="./adding.php" method="post" id="ann">
-                <font size="25">公告標題</font><br>
+            <form action="./ann_create.php" method="post" id="ann">
+                <font size="20">公告標題</font><br>
                 <input class="title" type="text" name="title" required><br>
-                <font size="25">公告內容</font><br>
+                <font size="20">公告內容</font><br>
                 <!--<input class="content" type="text" name="content" required><br>-->
-                <textarea class="content" cols="50" name="content"></textarea>
+                <textarea class="content" cols="50" name="content" required></textarea>
                 <input type="submit" name="ann_post" value="發佈公告">
                 <input type="reset" value="取消">
             </form>
