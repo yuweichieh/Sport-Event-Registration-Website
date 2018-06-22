@@ -20,7 +20,7 @@
 <html lang="zh-TW">
 <head>
 	<meta charset="utf-8">
-	<title>Event</title>
+	<title>Index</title>
 	<link rel="stylesheet" type="text/css" href="../css/styles.css"/>
     <link rel="stylesheet" type="text/css" href="../css/index.css"/>
     <!--
@@ -39,17 +39,8 @@
             <div class="logo">
                 <h1><a href="#">NCTU SPORTS</a></h1>
             </div>
-            <?php
-                if(!isset($_SESSION['username'])){
-            ?>
-            <ul class="_nav">
-                <li><a href="../index.php">首頁</a></li>
-                <li><a href="../register/register.php">註冊</a></li>
-                <li><a href="./event.php">活動報名</a></li>
-                <li><a href="../login/login.php">登入</a></li>
-            </ul>
             
-            <?php   }elseif($_SESSION['username']==1){  ?>
+            <?php   if($_SESSION['username']==1){  ?>
             <ul class="_nav">
                 <li><a href="../index.php">首頁</a></li>
                 <li><a href="./event.php">活動報名</a></li>
@@ -60,24 +51,23 @@
                     function logout(){
                         var conf = confirm("Do you want to logout?");
                         if(conf){
-                            window.location.href = '../login/logout.php';   
+                            window.location.href = './login/logout.php';   
                         }
                     }
                 </script>
             </ul>    
             
-            <?php   }else{  ?>
+            <?php   }elseif(isset($_SESSION['username'])){  ?>
             <ul class="_nav">
                 <li><a href="../index.php">首頁</a></li>
-                <li><a href="./event.php">活動報名</a></li>
-                <!--<li><a href="./login/logout.php">登出</a></li> class="btn btn-danger navbar-btn"-->
+                <li><a href="./event">活動報名</a></li>
                 <li style="color:white;">Hi, <?php echo $_SESSION['username']; ?></li>
                 <li><input type="button" value="登出" onclick="logout()"></li>
                 <script type="text/javascript">
                     function logout(){
                         var conf = confirm("Do you want to logout?");
                         if(conf){
-                            window.location.href = '../login/logout.php';   
+                            window.location.href = './login/logout.php';   
                         }
                     }
                 </script>
@@ -87,49 +77,25 @@
 	</div>
 
     <div class="container">
-        <div class="ann_box">
+        <div class="add_box">
             <?php
                 if(isset($_SESSION['message'])){
                     echo "<div id='error_msg'>".$_SESSION['message']."</div>";
                     unset($_SESSION['message']);
                 }
                 $conn = db_connect();
-                $query = "SELECT * FROM events";
+                $query = "SELECT count(distinct(s.team_name))as total_teams, e.team_limit as team_limit FROM signs s, events e where s.event_id=".$_GET["event_id"]."AND e.event_id=".$_GET['event_id'];
                 $result = mysqli_query($conn, $query);
                 mysqli_close($conn);
-            ?>
-
-            <h1>&nbsp;&nbsp;&nbsp;活動列表</h1>
-            <?php if($_SESSION['username']==1){ ?>
-                <a class="add_btn" href="./new_event.php">新增活動</a>
-            <?php } ?>
-            <table width=100% border="0" cellpadding ="6" cellspacing="0">
-                <tr>
-                    <th>項目</th> <td>規則</td> <td>報名</td>
-                    <?php   if($_SESSION['username']==1){   ?>
-                        <td>編輯公告</td><td>刪除公告</td>
-                    <?php   }   ?>
-                </tr>
-            <?php
-                while ($var = mysqli_fetch_array($result)){
-            ?>
-                <tr>
-                    <th><?php echo $var['name'] ?></th>
-                    <td><?php echo $var['rule'] ?></td>
-                    <?php if(isset($_SESSION['username'])){ ?>
-                        <td><a class="detail_btn" href="./sign.php?event_id=<?php echo $var['event_id']?>">報名</a></td>
-                    <?php }else{ ?>
-                        <td><a class="detail_btn" href="../login/login.php">報名</a></td>
-                    <?php }
-                          if($_SESSION['username']==1){ ?>
-                    <td><a class="edit_btn" href="#">Edit</a></td>
-                    <td><a class="delete_btn" href="./event_delete.php?event_id=<?php echo $var['event_id']?>" onclick="return confirm('Are you sure?')">Delete</a></td>
-                    <?php } ?>
-                </tr>
-            <?php
+                $var = mysqli_fetch_array($result);
+                if($var['total_teams']>=$var['team_limit']){
+                    mysqli_free_result($result);
+                    $_SESSION['message'] = "Reach the team limit constraint !";
+                    header('location: ../index.php');
                 }
+                else{
             ?>
-            </table>
+                <!-- member information table design with html -->
             <?php
                 mysqli_free_result($result);
             ?>

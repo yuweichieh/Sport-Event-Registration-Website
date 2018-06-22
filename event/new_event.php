@@ -38,25 +38,21 @@
 			<div class="logo">
                 <h1><a href="#">NCTU SPORTS</a></h1>
 			</div>
-            <?php
-            if(!isset($_SESSION['username'])){
-            ?>
-			<ul class="_nav">
-				<li><a href="../index.php">首頁</a></li>
-				<li><a href="../register/register.php">註冊</a></li>
-				<li><a href="#">活動報名</a></li>
-				<li><a href="../login/login.php">登入</a></li>
-			</ul>
-            <?php   }else{  ?>
             <ul class="_nav">
-				<li><a href="../index.php">首頁</a></li>
-				<li><a href="#">活動報名</a></li>
-				<!--<li><a href="./login/logout.php">登出</a></li> class="btn btn-danger navbar-btn"-->
+                <li><a href="../index.php">首頁</a></li>
+                <li><a href="./event.php">活動報名</a></li>
+                <li><a href="#">報名狀況</a></li>
+                <li style="color:white;">Hi, Admin</li>
                 <li><input type="button" value="登出" onclick="logout()"></li>
-               
-			</ul>
-            
-            <?php   }   ?>
+                <script type="text/javascript">
+                    function logout(){
+                        var conf = confirm("Do you want to logout?");
+                        if(conf){
+                            window.location.href = '../login/logout.php';   
+                        }
+                    }
+                </script>
+            </ul>    
         </div>
     </div>
     
@@ -70,14 +66,15 @@
                 }
             ?>      
             <form action="./event_create.php" method="post" id="ann">
-                <font size="16">活動名稱</font><br>
-                <input class="title" type="text" name="title" required><br>
-                <font size="16">活動規則</font><br>
-                <!--<input class="content" type="text" name="content" required><br>-->
+                <font size="12">活動名稱</font><br>
+                <input class="title" type="text" name="name" required><br>
+                <font size="12">活動日期</font><br>
+                <input class="title" type="date" name="date" required><br>
+                <font size="12">活動規則</font><br>
                 <textarea class="rule" cols="50" name="rule" required></textarea><br>
-                <font size="16">隊伍限制</font><br>
+                <font size="12">隊伍限制</font><br>
                 <input class="title" type="number" name="team_limit" required><br>
-                <font size="16">人數限制</font><br>
+                <font size="12">人數限制</font><br>
                 <input class="title" type="number" name="mem_limit" required><br>
                 <input type="submit" name="ann_post" value="發佈公告">
                 <input type="reset" value="取消">

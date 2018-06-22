@@ -38,25 +38,21 @@
 			<div class="logo">
                 <h1><a href="#">NCTU SPORTS</a></h1>
 			</div>
-            <?php
-            if(!isset($_SESSION['username'])){
-            ?>
-			<ul class="_nav">
-				<li><a href="../index.php">首頁</a></li>
-				<li><a href="../register/register.php">註冊</a></li>
-				<li><a href="#">活動報名</a></li>
-				<li><a href="../login/login.php">登入</a></li>
-			</ul>
-            <?php   }else{  ?>
             <ul class="_nav">
-				<li><a href="../index.php">首頁</a></li>
-				<li><a href="#">活動報名</a></li>
-				<!--<li><a href="./login/logout.php">登出</a></li> class="btn btn-danger navbar-btn"-->
+                <li><a href="../index.php">首頁</a></li>
+                <li><a href="../event/event.php">活動報名</a></li>
+                <li><a href="#">報名狀況</a></li>
+                <li style="color:white;">Hi, Admin</li>
                 <li><input type="button" value="登出" onclick="logout()"></li>
-               
-			</ul>
-            
-            <?php   }   ?>
+                <script type="text/javascript">
+                    function logout(){
+                        var conf = confirm("Do you want to logout?");
+                        if(conf){
+                            window.location.href = '../login/logout.php';   
+                        }
+                    }
+                </script>
+            </ul>    
         </div>
     </div>
     
