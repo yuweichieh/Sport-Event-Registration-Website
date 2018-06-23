@@ -6,7 +6,7 @@
     define(password, 'root');
     define(db_name, 'my_db');
     define(port, 8889);
-
+    $_SESSION['event_id'] = $_GET['event_id'];
     function db_connect(){
         // create connection to database
         $conn = mysqli_connect(host, user, password, db_name, port);
@@ -97,15 +97,19 @@
             ?>
                 <!-- member information form design with html -->
                 <h3 align="center">隊員名單</h3><br />
-                <form method="post" id="insert_form">
+                <form action="./insert_data.php" method="post" id="insert_form">
                     <div class="table-repsonsive">
+                        <span id="error"></span>
                         <table class="table table-bordered" id="item_table">
+                            <tr><th>隊伍名稱</th></tr>
+                            <tr>
+                            <th><input type="text" name="team_name" class="form-control team_name" /></th></tr>
                             <tr>
                             <th width=40%>Student ID</th>
-                                <th><center><button type="button" name="add" id="add" class="btn btn-success btn-sm add"><span class="glyphicon glyphicon-plus"></span></button></center></th></tr>
+                                <th width=20%><center><button type="button" name="add" id="add" class="btn btn-success btn-sm add"><span class="glyphicon glyphicon-plus"></span></button></center></th></tr>
                             <tr>
                             <td><input type="number" name="student_id[]" class="form-control student_id" /></td>
-                                <td> <button type="button" name="remove" class="btn btn-danger btn-sm remove"><span class="glyphicon glyphicon-minus"></span></button></td></tr>
+                                <td><center><button type="button" name="remove" class="btn btn-danger btn-sm remove"><span class="glyphicon glyphicon-minus"></span></button></center></td></tr>
                         </table>
                         <br />
                         <div align="center">
@@ -127,7 +131,7 @@ $(document).ready(function(){
        var html_code = '';
        html_code += '<tr>';
        html_code += '<td><input type="number" name="student_id[]" class="form-control student_id" /></td>';
-       html_code += '<td><button type="button" name="remove" class="btn btn-danger btn-sm remove"><span class="glyphicon glyphicon-minus"></span></button></td></tr>';
+       html_code += '<td><center><button type="button" name="remove" class="btn btn-danger btn-sm remove"><span class="glyphicon glyphicon-minus"></span></button></center></td></tr>';
        
        //$('#item_table').append(html_code);
        
@@ -137,5 +141,39 @@ $(document).ready(function(){
     $(document).on('click', '.remove', function(){
        $(this).closest('tr').remove(); 
     });
+    /*
+    $('##insert_form').on('submit', function(event){
+        event.preventDefault();
+        var error = '';
+        $('.student_id').each(function(){
+            var cnt = 1;
+            if($(this).val() == ''){
+                error += '<p>Input Student_ID at "+cnt+" Row</p>';
+                return false;
+            }
+            cnt = cnt + 1;
+        });
+        
+        var form_data = $(this).serialize();
+        
+        if(error == ''){
+            $.ajax({
+                url:"./insert_data.php",
+                method:"POST",
+                data:form_data,
+                success:function(data){
+                    if(data == 'ok'){
+                        $('#item_table').find("tr:gt(0)").remove();
+                        $('#error').html('<div class="alert alert-success">Sign up form Saved</div>');
+                    }
+                }
+            });
+        }
+        else{
+            $('#error').html('<div class="alert alert-danger">'+error+'</div>');
+        }
+        
+    });
+    */
 });
 </script>
