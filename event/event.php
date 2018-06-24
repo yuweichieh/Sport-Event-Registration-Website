@@ -107,7 +107,7 @@
                 <tr>
                     <th>項目</th> <td>規則</td> <td>報名</td>
                     <?php   if($_SESSION['username']==1){   ?>
-                        <td>編輯公告</td><td>刪除公告</td>
+                        <td>編輯活動</td><td>刪除活動</td>
                     <?php   }   ?>
                 </tr>
             <?php

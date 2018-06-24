@@ -141,39 +141,5 @@ $(document).ready(function(){
     $(document).on('click', '.remove', function(){
        $(this).closest('tr').remove(); 
     });
-    /*
-    $('##insert_form').on('submit', function(event){
-        event.preventDefault();
-        var error = '';
-        $('.student_id').each(function(){
-            var cnt = 1;
-            if($(this).val() == ''){
-                error += '<p>Input Student_ID at "+cnt+" Row</p>';
-                return false;
-            }
-            cnt = cnt + 1;
-        });
-        
-        var form_data = $(this).serialize();
-        
-        if(error == ''){
-            $.ajax({
-                url:"./insert_data.php",
-                method:"POST",
-                data:form_data,
-                success:function(data){
-                    if(data == 'ok'){
-                        $('#item_table').find("tr:gt(0)").remove();
-                        $('#error').html('<div class="alert alert-success">Sign up form Saved</div>');
-                    }
-                }
-            });
-        }
-        else{
-            $('#error').html('<div class="alert alert-danger">'+error+'</div>');
-        }
-        
-    });
-    */
 });
 </script>
