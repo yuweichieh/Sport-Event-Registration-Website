@@ -24,7 +24,7 @@
             header('location: ./register.php');
         }
         else{   // input datas got nothing wrong
-            //$password = md5($password);
+            $password = md5($password);
             $query = "INSERT INTO user(student_id, password, email, name) VALUES('$studentid', '$password', '$email', '$name')";
             mysqli_query($conn, $query) or die(mysqli_error($conn));
             $_SESSION['username'] = $studentid;

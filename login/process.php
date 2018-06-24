@@ -16,7 +16,7 @@
     }
 
 
-    $pwd = $_POST['password'];
+    $pwd = md5($_POST['password']);
     $id = $_POST['studentid'];
     //$_POST["password"] = md5($_POST["password"]);
     $conn = db_connect();

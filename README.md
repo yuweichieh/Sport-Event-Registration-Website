@@ -5,6 +5,7 @@
 * event status for admin users
 * bonus(edit)
 * regist checking
+* cancelling signups
 
 ## Schema
 * user { <br />
