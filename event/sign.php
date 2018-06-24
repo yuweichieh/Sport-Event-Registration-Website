@@ -83,19 +83,24 @@
                     unset($_SESSION['message']);
                 }
                 $conn = db_connect();
-                $query = "SELECT count(distinct(s.team_name))as total_teams, e.team_limit as team_limit FROM signs s, events e where s.event_id=".$_GET['event_id']."AND e.event_id=".$_GET['event_id'];
+                $query = "SELECT count(distinct(s.team_name))as total_teams, e.mem_limit as mem_limit, e.team_limit as team_limit FROM teams s, events e where e.event_id=".$_GET['event_id']." AND s.for_event=".$_GET['event_id'];
                 $result = mysqli_query($conn, $query);
                 mysqli_close($conn);
                 $var = mysqli_fetch_array($result); 
                 mysqli_free_result($result);
-               /* if($var['total_teams']>=$var['team_limit']){
+                if($var['total_teams']>=$var['team_limit']){
                     $_SESSION['message'] = "Reach the team limit constraint !";
-                    header('location: ../index.php');
+                    header('location: ./event.php');
                 }
-                else*/
+                else
                 {
             ?>
                 <!-- member information form design with html -->
+                <br />
+                <h5>每隊上限： <?php echo $var['mem_limit']?>人</h5>
+                <h5>隊伍上限： <?php echo $var['team_limit']?>隊</h5>
+                <h5>已報名隊伍： <?php echo $var['total_teams']?>隊</h5>
+                <a style="color:red">尚可報名： <?php echo ($var['team_limit']-$var['total_teams'])?>隊</a>
                 <h3 align="center">隊員名單</h3><br />
                 <form action="./insert_data.php" method="post" id="insert_form">
                     <div class="table-repsonsive">
