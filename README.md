@@ -7,39 +7,39 @@
 * regist checking
 
 ## Schema
-* user {
-    id (int, auto inc, primary key),
-    student_id (varchar(7)),
-    email (varchar(255)),
-    password (varchar(255)),
-    name (varchar(255))
-  }
-
-* announces {
-    ann_id (int, auto inc, primary key),
-    title (varchar(255)),
-    content (text),
-    ann_date (current timestamp)
-  }
-
-* event {
-    event_id (int, auto inc, primary key),
-    name (varchar(255)),
-    date (date),
-    mem_limit (int),
-    team_limit (int),
-    rule (text)
-  }
-  
-* signs {
-    sign_id (int, auto inc, primary key),
-    team_id (varchar(255)),
-    student_id (varchar(7)),
-    event_id (int)
-  }
-
-* teams {
-    team_id (int, auto inc, primary key),
-    team_name (varchar(255)),
-    for_event (int)
-  }
+* user { <br />
+    id (int, auto inc, primary key), <br />
+    student_id (varchar(7)), <br />
+    email (varchar(255)), <br />
+    password (varchar(255)), <br />
+    name (varchar(255)) <br />
+  } <br />
+<br />
+* announces { <br />
+    ann_id (int, auto inc, primary key), <br />
+    title (varchar(255)), <br />
+    content (text), <br />
+    ann_date (current timestamp) <br />
+  } <br />
+ <br />
+* event { <br />
+    event_id (int, auto inc, primary key), <br />
+    name (varchar(255)), <br />
+    date (date), <br />
+    mem_limit (int), <br />
+    team_limit (int), <br />
+    rule (text) <br />
+  } <br />
+  <br /> 
+* signs { <br />
+    sign_id (int, auto inc, primary key), <br />
+    team_id (varchar(255)), <br />
+    student_id (varchar(7)), <br />
+    event_id (int) <br />
+  } <br />
+ <br />
+* teams { <br />
+    team_id (int, auto inc, primary key), <br />
+    team_name (varchar(255)), <br />
+    for_event (int) <br />
+  } <br />
