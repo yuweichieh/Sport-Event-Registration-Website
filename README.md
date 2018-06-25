@@ -5,7 +5,7 @@
 * event status for admin users
 * bonus(edit)
 * regist checking
-* cancelling signups
+* bug in signup view (can't see the signers' name)
 
 ## Schema
 * user { <br />
