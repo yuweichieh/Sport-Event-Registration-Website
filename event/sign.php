@@ -101,6 +101,7 @@
                     // find all user in this team
                     $query = "select student_id from signs where team_id=".$team_id['team_id'];
                     $result = mysqli_query($conn, $query);
+                    $_SESSION['team_id'] = $team_id['team_id'];
                     // get team name
                     $query = "select team_name from teams where team_id=".$team_id['team_id'];
                     $result2 = mysqli_query($conn, $query);
@@ -118,7 +119,7 @@
                     <td><h4><?php echo $var['student_id']; ?></h4></td>
                     <td><h4><?php
                     $conn2 = db_connect();
-                    $query = "select user_id from user where student_id=123";
+                    $query = "select user_id from user where student_id=".$var['student_id'];
                     $_reuslt = mysqli_query($conn, $query);
                     $name = mysqli_fetch_array($_result);
                     echo $name['user_id']; ?></h4></td>
@@ -128,7 +129,7 @@
                 }
             ?>
                     </table>
-                <center><a href="./sign_delete.php?event_id=<?php echo $_GET['event_id']."&team_id=".$team_id['team_id']?>" class="delete_btn">取消報名</a></center>
+                <center><a href="./sign_delete.php" onclick="return confirm('Are you sure?')" class="delete_btn">取消報名</a></center>
             <?php
                     mysqli_close($conn);
                 }

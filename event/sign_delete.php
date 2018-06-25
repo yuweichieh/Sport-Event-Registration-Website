@@ -6,7 +6,7 @@
     define(password, 'root');
     define(db_name, 'my_db');
     define(port, 8889);
-    $_SESSION['event_id'] = $_GET['event_id'];
+    //$_SESSION['event_id'] = $_GET['event_id'];
     function db_connect(){
         // create connection to database
         $conn = mysqli_connect(host, user, password, db_name, port);
@@ -18,8 +18,10 @@
     $conn = db_connect();
     //echo $_GET['team_id'];
     //echo $_GET['event_id'];
-    $query2 = "DELETE FROM signs WHERE event_id=".$_GET["event_id"]." AND team_id=".$_GET['team_id'];
-    $result2 = mysqli_query($conn, $query2) or die;
+    $query2 = "DELETE FROM signs WHERE event_id=".$_SESSION['event_id']." AND team_id=".$_SESSION['team_id'];
+    $result2 = mysqli_query($conn, $query2) or die(mysqli_error($conn));
+    $query = "DELETE FROM teams WHERE team_id=".$_SESSION['team_id'];
+    mysqli_query($conn, $query) or die(mysqli_error($conn));
     mysqli_close($conn);
 
     header('location: ../index.php');
