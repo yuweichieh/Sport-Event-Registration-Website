@@ -114,16 +114,17 @@
                 while ($var = mysqli_fetch_array($result)){
             ?>
                 <tr>
-                    <th><?php echo $var['name'] ?></th>
-                    <td><?php echo $var['rule'] ?></td>
-                    <?php if(isset($_SESSION['username'])){ ?>
-                        <td><a class="detail_btn" href="./sign.php?event_id=<?php echo $var['event_id']?>">報名</a></td>
+                    <th width=35%><?php echo $var['name'] ?></th>
+                    <td width=35$><?php echo $var['rule'] ?></td>
+                    <?php if($_SESSION['username']==1){  ?>
+                        <td width = 10%><center><a class="detail_btn" href="./sign.php?event_id=<?php echo $var['event_id']?>">報名</a></center></td>
+                        <td width = 10%><center><a class="edit_btn" href="#">Edit</a></center></td>
+                        <td width = 10%><center><a class="delete_btn" href="./event_delete.php?event_id=<?php echo $var['event_id']?>" onclick="return confirm('Are you sure?')">Delete</a></center></td>
+
+                    <?php }elseif(isset($_SESSION['username'])){ ?>
+                        <td width = 30%><a class="detail_btn" href="./sign.php?event_id=<?php echo $var['event_id']?>">報名</a></td>
                     <?php }else{ ?>
-                        <td><a class="detail_btn" href="../login/login.php">報名</a></td>
-                    <?php }
-                          if($_SESSION['username']==1){ ?>
-                    <td><a class="edit_btn" href="#">Edit</a></td>
-                    <td><a class="delete_btn" href="./event_delete.php?event_id=<?php echo $var['event_id']?>" onclick="return confirm('Are you sure?')">Delete</a></td>
+                        <td width = 30%><a class="detail_btn" href="../login/login.php">報名</a></td>
                     <?php } ?>
                 </tr>
             <?php

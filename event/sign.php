@@ -22,10 +22,11 @@
 	<meta charset="utf-8">
 	<title>Index</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+	
     <link rel="stylesheet" type="text/css" href="../css/anncs.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
  <!--   <script src="jquery-3.3.1.min.js"></script> -->
     
 </head>
@@ -50,7 +51,7 @@
                     function logout(){
                         var conf = confirm("Do you want to logout?");
                         if(conf){
-                            window.location.href = './login/logout.php';   
+                            window.location.href = '../login/logout.php';   
                         }
                     }
                 </script>
@@ -59,14 +60,14 @@
             <?php   }elseif(isset($_SESSION['username'])){  ?>
             <ul class="_nav">
                 <li><a href="../index.php">首頁</a></li>
-                <li><a href="./event">活動報名</a></li>
+                <li><a href="./event.php">活動報名</a></li>
                 <li style="color:white;">Hi, <?php echo $_SESSION['username']; ?></li>
                 <li><input type="button" value="登出" onclick="logout()"></li>
                 <script type="text/javascript">
                     function logout(){
                         var conf = confirm("Do you want to logout?");
                         if(conf){
-                            window.location.href = './login/logout.php';   
+                            window.location.href = '../login/logout.php';   
                         }
                     }
                 </script>
@@ -83,12 +84,56 @@
                     unset($_SESSION['message']);
                 }
                 $conn = db_connect();
+                // finding signed teams and team limit
                 $query = "SELECT count(distinct(s.team_name))as total_teams, e.mem_limit as mem_limit, e.team_limit as team_limit FROM teams s, events e where e.event_id=".$_GET['event_id']." AND s.for_event=".$_GET['event_id'];
                 $result = mysqli_query($conn, $query);
+                // check if this user has signed
+                $query = "select team_id from signs where event_id=".$_GET['event_id']." and student_id=".$_SESSION['username'];
+                $check = mysqli_query($conn, $query);
                 mysqli_close($conn);
                 $var = mysqli_fetch_array($result); 
                 mysqli_free_result($result);
-                if($var['total_teams']>=$var['team_limit']){
+                // the user has already sign in for this event
+                // then give the signed team's information and delete button
+                if(mysqli_num_rows($check)!=0){
+                    $conn = db_connect();
+                    $team_id = mysqli_fetch_array($check);
+                    // find all user in this team
+                    $query = "select student_id from signs where team_id=".$team_id['team_id'];
+                    $result = mysqli_query($conn, $query);
+                    // get team name
+                    $query = "select team_name from teams where team_id=".$team_id['team_id'];
+                    $result2 = mysqli_query($conn, $query);
+                    $team_name = mysqli_fetch_array($result2);
+                    
+            ?>
+                <table width=80% border="0" cellpadding ="6" cellspacing="0">                    
+                    <h1><?php echo $team_name['team_name'] ?></h1>
+                    <th width=40%><h3>學號</h3></th><th width=40%><h3>姓名</h3></th>
+            <?php   
+                while ($var = mysqli_fetch_array($result)){
+                    
+            ?>
+                <tr>
+                    <td><h4><?php echo $var['student_id']; ?></h4></td>
+                    <td><h4><?php
+                    $conn2 = db_connect();
+                    $query = "select user_id from user where student_id=123";
+                    $_reuslt = mysqli_query($conn, $query);
+                    $name = mysqli_fetch_array($_result);
+                    echo $name['user_id']; ?></h4></td>
+                    
+                </tr>
+            <?php
+                }
+            ?>
+                    </table>
+                <center><a href="./sign_delete.php?event_id=<?php echo $_GET['event_id']."&team_id=".$team_id['team_id']?>" class="delete_btn">取消報名</a></center>
+            <?php
+                    mysqli_close($conn);
+                }
+                // the event has reached the total team limit
+                elseif($var['total_teams']>=$var['team_limit']){
                     $_SESSION['message'] = "Reach the team limit constraint !";
                     header('location: ./event.php');
                 }
