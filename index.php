@@ -53,7 +53,7 @@
             <ul class="_nav">
                 <li><a href="./index.php">首頁</a></li>
                 <li><a href="./event/event.php">活動報名</a></li>
-                <li><a href="#">報名狀況</a></li>
+                <li><a href="./event/status.php">報名狀況</a></li>
                 <li style="color:white;">Hi, Admin</li>
                 <li><input type="button" value="登出" onclick="logout()"></li>
                 <script type="text/javascript">

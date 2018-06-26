@@ -3,8 +3,8 @@
 ---
 ## Left to be done
 * event status for admin users
-* bonus(edit)
-* regist checking
+* bonus(Edit)
+* Captcha
 * bug in signup view (can't see the signers' name)
 
 ## Schema

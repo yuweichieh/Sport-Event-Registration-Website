@@ -65,7 +65,7 @@
             <?php   }else{  ?>
             <ul class="_nav">
 				<li><a href="../index.php">首頁</a></li>
-				<li><a href="#">活動報名</a></li>
+				<li><a href="../event/event.php">活動報名</a></li>
                 <li style="color:white;">Hi, <?php echo $_SESSION['username']; ?></li>
 				<!--<li><a href="./login/logout.php">登出</a></li> class="btn btn-danger navbar-btn"-->
                 <li><input type="button" value="登出" onclick="logout()"></li>
