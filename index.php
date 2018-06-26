@@ -112,7 +112,7 @@
                     <td><?php echo $var['title'] ?></td>
                     <td><a class="detail_btn" href="./anncs/anncs.php?ann_id=<?php echo $var['ann_id']?>">More</a></td>
                     <?php if($_SESSION['username']==1){?>
-                    <td><a class="edit_btn" href="#">Edit</a></td>
+                    <td><a class="edit_btn" href="./anncs/edit_anncs.php?ann_id=<?php echo $var['ann_id']?>">Edit</a></td>
                     <td><a class="delete_btn" href="./anncs/anncs_delete.php?ann_id=<?php echo $var['ann_id']?>" onclick="return confirm('Are you sure?')">Delete</a></td>
                     <?php } ?>
                 </tr>

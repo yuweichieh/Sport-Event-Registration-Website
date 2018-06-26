@@ -20,7 +20,7 @@
 <html lang="zh-TW">
 <head>
 	<meta charset="utf-8">
-	<title>New Event</title>
+	<title>Edit Announcement</title>
 	<link rel="stylesheet" type="text/css" href="../css/styles.css">
 	<link rel="stylesheet" type="text/css" href="../css/anncs.css">
     <link rel="stylesheet" type="text/css" href="../css/index.css">
@@ -40,8 +40,8 @@
 			</div>
             <ul class="_nav">
                 <li><a href="../index.php">首頁</a></li>
-                <li><a href="./event.php">活動報名</a></li>
-                <li><a href="./status.php">報名狀況</a></li>
+                <li><a href="../event/event.php">活動報名</a></li>
+                <li><a href="../event/status.php">報名狀況</a></li>
                 <li style="color:white;">Hi, Admin</li>
                 <li><input type="button" value="登出" onclick="logout()"></li>
                 <script type="text/javascript">
@@ -64,18 +64,18 @@
                     echo "<div id='error_msg'>".$_SESSION['message']."</div>";
                     unset($_SESSION['message']);
                 }
+                $_SESSION['ann_id'] = $_GET['ann_id'];
+                $conn = db_connect();
+                $query = "select * from announces where ann_id=".$_GET['ann_id'];
+                $result = mysqli_query($conn, $query);
+                $var = mysqli_fetch_array($result);
             ?>      
-            <form action="./event_create.php" method="post" id="ann">
-                <font size="12">活動名稱</font><br>
-                <input class="title" type="text" name="name" required><br>
-                <font size="12">活動日期</font><br>
-                <input class="title" type="date" name="date" required><br>
-                <font size="12">活動規則</font><br>
-                <textarea class="rule" cols="50" name="rule" required></textarea><br>
-                <font size="12">隊伍限制</font><br>
-                <input class="title" type="number" name="team_limit" required><br>
-                <font size="12">人數限制</font><br>
-                <input class="title" type="number" name="mem_limit" required><br>
+            <form action="./update.php" method="post" id="ann">
+                <font size="20">公告標題</font><br>
+                <textarea class="title" cols="50" name="title" required><?php echo $var['title']?></textarea>
+                <font size="20">公告內容</font><br>
+                <!--<input class="content" type="text" name="content" required><br>-->
+                <textarea class="content" cols="50" name="content" required><?php echo $var['content'] ?></textarea>
                 <input type="submit" name="ann_post" value="發佈公告">
                 <input type="reset" value="取消">
             </form>

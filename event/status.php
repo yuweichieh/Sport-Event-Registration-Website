@@ -20,7 +20,7 @@
 <html lang="zh-TW">
 <head>
 	<meta charset="utf-8">
-	<title>Event</title>
+	<title>Status</title>
 	<link rel="stylesheet" type="text/css" href="../css/styles.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/status.css"/>
     <link rel="stylesheet" type="text/css" href="../css/index.css"/>

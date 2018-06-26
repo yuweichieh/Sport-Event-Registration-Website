@@ -20,7 +20,7 @@
 <html lang="zh-TW">
 <head>
 	<meta charset="utf-8">
-	<title>Index</title>
+	<title>Signing</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	
     <link rel="stylesheet" type="text/css" href="../css/anncs.css"/>
