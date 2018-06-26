@@ -20,7 +20,7 @@
 <html lang="zh-TW">
 <head>
 	<meta charset="utf-8">
-	<title>New Event</title>
+	<title>Update Event</title>
 	<link rel="stylesheet" type="text/css" href="../css/styles.css">
 	<link rel="stylesheet" type="text/css" href="../css/anncs.css">
     <link rel="stylesheet" type="text/css" href="../css/index.css">
@@ -64,19 +64,24 @@
                     echo "<div id='error_msg'>".$_SESSION['message']."</div>";
                     unset($_SESSION['message']);
                 }
+                $_SESSION['event_id'] = $_GET['event_id'];
+                $conn = db_connect();
+                $query = "select * from events where event_id=".$_GET['event_id'];
+                $result = mysqli_query($conn, $query);
+                $var = mysqli_fetch_array($result);
             ?>      
-            <form action="./event_create.php" method="post" id="ann">
+            <form action="./edit.php" method="post" id="ann">
                 <font size="12">活動名稱</font><br>
-                <input class="title" type="text" name="name" required><br>
+                <textarea class="title" cols="50" name="name" required><?php echo $var['name']?></textarea><br>
                 <font size="12">活動日期</font><br>
-                <input class="title" type="date" name="date" required><br>
+                <textarea class="title" cols="50" name="date" required><?php echo $var['date']?></textarea><br>
                 <font size="12">活動規則</font><br>
-                <textarea class="rule" cols="50" name="rule" required></textarea><br>
+                <textarea class="rule" cols="50" name="rule" required><?php echo $var['rule']?></textarea><br>
                 <font size="12">隊伍限制</font><br>
-                <input class="title" type="number" name="team_limit" required><br>
+                <textarea class="title" cols="50" name="team_limit" required><?php echo $var['team_limit']?></textarea><br>
                 <font size="12">人數限制</font><br>
-                <input class="title" type="number" name="mem_limit" required><br>
-                <input type="submit" name="event_post" value="發佈公告">
+                <textarea class="title" cols="50" name="mem_limit" required><?php echo $var['mem_limit']?></textarea><br>
+                <input type="submit" name="event_update" value="發佈公告">
                 <input type="reset" value="取消">
             </form>
         </div>

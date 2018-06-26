@@ -118,7 +118,7 @@
                     <td width=35$><?php echo $var['rule'] ?></td>
                     <?php if($_SESSION['username']==1){  ?>
                         <td width = 10%><center><a class="detail_btn" href="./sign.php?event_id=<?php echo $var['event_id']?>">報名</a></center></td>
-                        <td width = 10%><center><a class="edit_btn" href="#">Edit</a></center></td>
+                        <td width = 10%><center><a class="edit_btn" href="./event_edit.php?event_id=<?php echo $var['event_id']?>">Edit</a></center></td>
                         <td width = 10%><center><a class="delete_btn" href="./event_delete.php?event_id=<?php echo $var['event_id']?>" onclick="return confirm('Are you sure?')">Delete</a></center></td>
 
                     <?php }elseif(isset($_SESSION['username'])){ ?>
