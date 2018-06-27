@@ -103,27 +103,25 @@
                     $result = mysqli_query($conn, $query);
                     $_SESSION['team_id'] = $team_id['team_id'];
                     // get team name
-                    $query = "select team_name from teams where team_id=".$team_id['team_id'];
-                    $result2 = mysqli_query($conn, $query);
-                    $team_name = mysqli_fetch_array($result2);
+                    $query2 = "select team_name from teams where team_id=".$team_id['team_id'];
+                    $result2 = mysqli_query($conn, $query2);
+                    $var2 = mysqli_fetch_array($result2);
                     
             ?>
                 <table width=80% border="0" cellpadding ="6" cellspacing="0">                    
-                    <h1><?php echo $team_name['team_name'] ?></h1>
+                    <h1><?php echo $var2['team_name'] ?></h1>
                     <th width=40%><h3>學號</h3></th><th width=40%><h3>姓名</h3></th>
             <?php   
                 while ($var = mysqli_fetch_array($result)){
-                    
+                    $conn = db_connect();
+                    $id = $var['student_id'];
+                    $query = "select * from user where student_id='$id'";
+                    $_reuslt = mysqli_query($conn, $query);
+                    $_name = mysqli_fetch_array($_result);                    
             ?>
                 <tr>
-                    <td><h4><?php echo $var['student_id']; ?></h4></td>
-                    <td><h4><?php
-                    $conn2 = db_connect();
-                    $query = "select user_id from user where student_id=".$var['student_id'];
-                    $_reuslt = mysqli_query($conn, $query);
-                    $name = mysqli_fetch_array($_result);
-                    echo $name['user_id']; ?></h4></td>
-                    
+                    <td width=40%><h4><?php echo $var['student_id']; ?></h4></td>
+                    <td width=40%><h4><?php echo $_name['name']; ?></h4></td>
                 </tr>
             <?php
                 }
