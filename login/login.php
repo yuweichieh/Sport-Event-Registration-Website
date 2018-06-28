@@ -1,11 +1,13 @@
 <?php
     session_start();
+    include('/src/autoload.php');
+
     // parameters setup
-    define(host, 'localhost');
+   /* define(host, 'localhost');
     define(user, 'root');
-    define(password, 'root');
-    define(db_name, 'my_db');
-    define(port, 8889);
+    define(password, '123');
+    define(db_name, 'final');
+    //define(port, 8889);
 
     function db_connect(){
         // create connection to database
@@ -13,7 +15,21 @@
         if($conn->connect_error)
             die("Connection failed: ". $conn->connect_error);
         return $conn;
-    }
+    }*/
+    $servername = "localhost";//連接伺服器
+	$username = "root";
+	$password = "123";
+	$dbname = "final";//選擇欲讀取的資料庫名稱
+	$conn = new mysqli($servername, $username, $password, $dbname);//create connection
+    mysqli_query($conn, "SET NAMES 'UTF8'");
+
+    $siteKey = '6LfF_GAUAAAAAFfYGBfsinBjf1pdiKkY_TBZLQwq';
+    $secret = '6LfF_GAUAAAAAIotJgLfa60983blVIOeMYXCVoP8';
+
+    // 初始化變數為空值
+    $resp = '';
+   
+
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +39,8 @@
 	<title>Login</title>
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../css/login.css">
-	
-	<script></script>
+    <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl=<?php echo $lang; ?>" async defer></script>
+
 </head>
 
 <!-- ==================================== -->
@@ -45,6 +61,8 @@
                 </ul>
             </div>	
         </div>
+ 
+
         
         <div class="container">
             <div class="login_box">
@@ -59,7 +77,11 @@
                     <input type="number" name="studentid" placeholder="Enter your Student ID" /><br>
                     <b>密碼</b><br>
                     <input type="password" name="password" placeholder="Enter your password" /><br>
+                    
+                    <div class="g-recaptcha" data-sitekey="<?php echo $siteKey; ?>"></div>
+                    <br><br>
                     <input type="submit" name="login_btn" value="Login" /> 
+
                 </form>
             </div>
         </div>
